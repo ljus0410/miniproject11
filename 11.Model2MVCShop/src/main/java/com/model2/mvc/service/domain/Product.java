@@ -13,6 +13,7 @@ public class Product {
 	private int price;
 	private Date regDate;
 	private String proTranCode="판매중";
+	private int prodCount;
 	
 	public Product(){
 	}
@@ -78,5 +79,13 @@ public class Product {
 		return "ProductVO : [fileName]" + fileName
 				+ "[manuDate]" + manuDate+ "[price]" + price + "[prodDetail]" + prodDetail
 				+ "[prodName]" + prodName + "[prodNo]" + prodNo + "[prodTranCode]" + proTranCode;
+	}
+
+	public int getProdCount() {
+		return prodCount;
+	}
+
+	public void setProdCount(int prodCount) {
+		this.prodCount = prodCount;
 	}	
 }

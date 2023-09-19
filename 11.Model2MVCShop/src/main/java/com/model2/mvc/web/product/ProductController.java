@@ -66,7 +66,7 @@ public class ProductController {
 
 		System.out.println("/addProduct POST");
 		String originalFilename = null;
-		String temDir = "C:\\miniproject\\11.Model2MVCShop\\src\\main\\webapp\\images\\uploadFiles\\";
+		String temDir = "C:\\miniproject\\10.Model2MVCShop(Ajax)\\src\\main\\webapp\\images\\uploadFiles\\";
 		
 		if (!file.isEmpty()) {
             originalFilename = file.getOriginalFilename();

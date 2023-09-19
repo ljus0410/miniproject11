@@ -77,7 +77,7 @@
 		
 		<div class="row">
 	  		<div class="col-xs-4 col-md-2 "><strong>주소</strong></div>
-			<div class="col-xs-8 col-md-4">${user.addr}</div>
+			<div class="col-xs-8 col-md-4">${user.addrRoad} ${user.addrExtra}</div>
 		</div>
 		
 		<hr/>

@@ -18,6 +18,8 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
        body > div.container{
@@ -46,6 +48,19 @@
 			});
 		});	
 	
+		$(function() {
+        	
+        	$("input:button").click(function daumPostcode() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        
+                    	$("#addrPostcode").val(data.zonecode);
+                    	$("#addrRoad").val(data.roadAddress);
+                             
+                    }
+                }).open();
+            })
+		});
 		
 		function fncAddUser() {
 			
@@ -204,7 +219,7 @@
 		  <div class="form-group">
 		    <label for="userName" class="col-sm-offset-1 col-sm-3 control-label">이름</label>
 		    <div class="col-sm-4">
-		      <input type="password" class="form-control" id="userName" name="userName" placeholder="회원이름">
+		      <input type="text" class="form-control" id="userName" name="userName" placeholder="회원이름">
 		    </div>
 		  </div>
 		  
@@ -218,10 +233,27 @@
 		    </div>
 		  </div>
 		  
+		 <div class="form-group">
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+		    <div class="col-sm-4 inline">
+		      <input type="text" class="form-control" id="addrPostcode" name="addrPostcode" placeholder="우편번호">
+		    </div>
+		    <div class="col-sm-2 inline">
+		      <input type="button" class="btn btn-info" name="button" value="우편번호 찾기">
+		    </div>
+		  </div>
+		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label"></label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="addr" name="addr" placeholder="주소">
+		      <input type="text" class="form-control" id="addrRoad" name="addrRoad" placeholder="도로명주소">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label"></label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="addrExtra" name="addrExtra" placeholder="상세주소">
 		    </div>
 		  </div>
 		  

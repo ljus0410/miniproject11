@@ -15,13 +15,14 @@
 		<result property="prodName" 	column="prod_name" 			jdbcType="VARCHAR" />
 		<result property="prodNo" 		column="prod_no" 			jdbcType="NUMERIC" />
 		<result property="regDate" 		column="reg_date" 			jdbcType="DATE" />
+		<result property="prodCount" 	column="prod_count" 		jdbcType="NUMERIC" />
 	</resultMap>
 	
 	<!-- SQL : INSERT -->
 	<insert id="insertProduct" parameterType="product" >
 	 	INSERT
-		INTO product(prod_no, prod_name, prod_detail, manufacture_day, price, image_file, reg_date) 
-		VALUES (seq_product_prod_no.nextval, #{prodName}, #{prodDetail}, #{manuDate}, #{price}, #{fileName}, SYSDATE)
+		INTO product(prod_no, prod_name, prod_detail, manufacture_day, price, image_file, reg_date, prod_count) 
+		VALUES (seq_product_prod_no.nextval, #{prodName}, #{prodDetail}, #{manuDate}, #{price}, #{fileName}, SYSDATE, #{prodCount:NUMERIC})
 	 </insert>
 	 
 	 <!-- SQL : SELECT ONE -->

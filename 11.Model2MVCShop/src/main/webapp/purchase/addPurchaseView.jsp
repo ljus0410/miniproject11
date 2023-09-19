@@ -28,6 +28,42 @@
 
 <script type="text/javascript">
 
+$(function() {
+	
+	$("input:button").click(function daumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                
+            	$("#addrPostcode").val(data.zonecode);
+            	$("#addrRoad").val(data.roadAddress);
+                     
+            }
+        }).open();
+    })
+	
+    $("#inlineRadio1").click(function() {
+    	$.ajax(
+				{
+					url : "/user/json/getUser/"+$("#userId").val(),
+					method : "GET",
+					dataType : "json",
+					headers : {
+						"Accept" : "application/json",
+						"Content-Type" : "application/json"
+					},
+					success : function(JSONData, status) {
+						$("#addrPostcode").val(JSONData.addrPostcode);
+						$("#addrRoad").val(JSONData.addrRoad);
+						$("#addrExtra").val(JSONData.addrExtra);
+					}
+				}
+			);
+    })
+    $("#inlineRadio2").click(function() {
+		$("form")[0].reset();
+	});
+});
+
 	$(function() {
 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 		$( "button.btn.btn-primary" ).on("click" , function() {
@@ -63,7 +99,7 @@
 		<form class="form-horizontal">
 		
 		<input type="hidden" name="prodNo" value="${product.prodNo}" />
-		<input type="hidden" name="userId" value="${user.userId}" />
+		<input type="hidden" id="userId" name="userId" value="${user.userId}" />
 		
 			<div class="form-group">
 				<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명</label>
@@ -125,11 +161,37 @@
    			</div>
    			
    			<div class="form-group">
-   				<label for="divyAddr" class="col-sm-offset-1 col-sm-3 control-label">배송 주소</label>
-   				<div class="col-sm-4">
-		    		<input type="text" class="form-control" id="divyAddr" name="divyAddr">
-				</div>
-   			</div>
+		    	<label class="col-sm-offset-4 col-sm-2 radio-inline">
+		  			<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 회원정보와 동일
+				</label>
+				<label class="col-sm-offset-4 col-sm-2 radio-inline">
+		  			<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked> 새로운 배송지
+				</label>
+		  	</div>
+		  	
+   			<div class="form-group">
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+		    <div class="col-sm-4 inline">
+		      <input type="text" class="form-control" id="addrPostcode" name="addrPostcode" placeholder="우편번호">
+		    </div>
+		    <div class="col-sm-2 inline">
+		      <input type="button" class="btn btn-info" name="button" value="우편번호 찾기">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label"></label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="addrRoad" name="addrRoad" placeholder="도로명주소">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label"></label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="addrExtra" name="addrExtra" placeholder="상세주소">
+		    </div>
+		  </div>
    			
    			<div class="form-group">
    				<label for="divyRequest" class="col-sm-offset-1 col-sm-3 control-label">배송 요청사항</label>

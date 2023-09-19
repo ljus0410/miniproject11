@@ -145,9 +145,26 @@
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="ssn" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+		    <div class="col-sm-4 inline">
+		      <input type="text" class="form-control" id="addrPostcode" name="addrPostcode" value="${user.addrPostcode}" placeholder="우편번호">
+		    </div>
+		    <div class="col-sm-2 inline">
+		      <input type="button" class="btn btn-info" name="button" value="우편번호 찾기">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label"></label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="addr" name="addr"  value="${user.addr}" placeholder="변경주소">
+		      <input type="text" class="form-control" id="addrRoad" name="addrRoad" placeholder="도로명주소" value="${user.addrRoad}">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label"></label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="addrExtra" name="addrExtra" placeholder="상세주소" value="${user.addrExtra}">
 		    </div>
 		  </div>
 		  

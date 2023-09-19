@@ -3,7 +3,7 @@ package com.model2.mvc.service.domain;
 import java.sql.Date;
 
 
-//==>È¸¿øÁ¤º¸¸¦ ¸ðµ¨¸µ(Ãß»óÈ­/Ä¸½¶È­)ÇÑ Bean
+//==>È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ðµ¨¸ï¿½(ï¿½ß»ï¿½È­/Ä¸ï¿½ï¿½È­)ï¿½ï¿½ Bean
 public class User {
 	
 	///Field
@@ -13,15 +13,14 @@ public class User {
 	private String role;
 	private String ssn;
 	private String phone;
-	private String addr;
+	private String addrPostcode;
+	private String addrRoad;
+	private String addrExtra;
 	private String email;
 	private Date regDate;
-	/////////////// EL Àû¿ë À§ÇØ Ãß°¡µÈ Field ///////////
 	private String phone1;
 	private String phone2;
 	private String phone3;
-	//////////////////////////////////////////////////////////////////////////////////////////////
-	// JSON ==> Domain Object  BindingÀ» À§ÇØ Ãß°¡µÈ ºÎºÐ
 	private String regDateString;
 
 	
@@ -66,19 +65,14 @@ public class User {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-		/////////////// EL Àû¿ë À§ÇØ Ãß°¡ ///////////
+		/////////////// EL ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ///////////
 		if(phone != null && phone.length() !=0 ){
 			phone1 = phone.split("-")[0];
 			phone2 = phone.split("-")[1];
 			phone3 = phone.split("-")[2];
 		}
 	}
-	public String getAddr() {
-		return addr;
-	}
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -89,12 +83,12 @@ public class User {
 		return regDate;
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////
-	// JSON ==> Domain Object  BindingÀ» À§ÇØ Ãß°¡µÈ ºÎºÐ
+	// JSON ==> Domain Object  Bindingï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½Îºï¿½
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 		
 		if(regDate !=null) {
-			// JSON ==> Domain Object  BindingÀ» À§ÇØ Ãß°¡µÈ ºÎºÐ
+			// JSON ==> Domain Object  Bindingï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½Îºï¿½
 			this.setRegDateString( regDate.toString().split("-")[0]
 													+"-"+ regDate.toString().split("-")[1]
 													+ "-" +regDate.toString().split("-")[2] );
@@ -102,7 +96,7 @@ public class User {
 		
 	}
 	
-	/////////////// EL Àû¿ë À§ÇØ Ãß°¡µÈ getter Method ///////////
+	/////////////// EL ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ getter Method ///////////
 	public String getPhone1() {
 		return phone1;
 	}
@@ -120,8 +114,8 @@ public class User {
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////
-	// JSON ==> Domain Object  BindingÀ» À§ÇØ Ãß°¡µÈ ºÎºÐ
-	// POJO ÀÇ Áß¿ä¼º
+	// JSON ==> Domain Object  Bindingï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½Îºï¿½
+	// POJO ï¿½ï¿½ ï¿½ß¿ä¼º
 	public void setPhone1(String phone1) {
 		this.phone1 = phone1;
 	}
@@ -141,5 +135,29 @@ public class User {
 
 	public void setRegDateString(String regDateString) {
 		this.regDateString = regDateString;
+	}
+
+	public String getAddrPostcode() {
+		return addrPostcode;
+	}
+
+	public void setAddrPostcode(String addrPostcode) {
+		this.addrPostcode = addrPostcode;
+	}
+
+	public String getAddrRoad() {
+		return addrRoad;
+	}
+
+	public void setAddrRoad(String addrRoad) {
+		this.addrRoad = addrRoad;
+	}
+
+	public String getAddrExtra() {
+		return addrExtra;
+	}
+
+	public void setAddrExtra(String addrExtra) {
+		this.addrExtra = addrExtra;
 	}
 }
