@@ -134,14 +134,23 @@
 		  	</div>
 		  	
 		  	<div class="form-group">
+		    	<label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">상품갯수</label>
+		    	<div class="col-sm-4">
+		      		<input type="text" class="form-control" id="prodCount" name="prodCount">
+		    	</div>
+		  	</div>
+		  	
+		  	<div class="form-group">
 		    	<label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		    	<div class="col-sm-4">
 		      		<input type="file" class="form-control" id="fileNameOrigin" name="fileNameOrigin">
 		    	</div>
 		  	</div>
 		  	
-		  	<div class="col-sm-offset-4 col-sm-3">
-		    	<img src="" alt="미리보기" id="imagePreview" style="display:none; max-width: 350px;">
+		  	<div class="form-group">
+			  	<div class="col-sm-offset-4 col-sm-3">
+			    	<img src="" alt="미리보기" id="imagePreview" style="display:none; max-width: 350px;">
+			  	</div>
 		  	</div>
 		  	
 		  	<div class="form-group">

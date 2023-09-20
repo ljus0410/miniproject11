@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
 
 <head>
@@ -81,8 +82,21 @@ $(function() {
 	function fncAddPurchase() {
 		$("form").attr("method","POST").attr("action","/purchase/addPurchase").submit();
 	}
+	
+	$(function() {
+		var today = new Date();
+		
+		var yyyy = today.getFullYear();
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더하고 두 자리로 패딩합니다.
+		var dd = String(today.getDate()).padStart(2, '0'); // 일도 두 자리로 패딩합니다.
+		var formattedDate = yyyy + '-' + mm + '-' + dd;
+		
+		$("#divyDate").attr("min", formattedDate);
+	})
 
 </script>
+
+
 </head>
 
 <body>
@@ -130,6 +144,18 @@ $(function() {
 			</div>
 			
 			<div class="form-group">
+				<label for="price" class="col-sm-offset-1 col-sm-3 control-label">상품갯수</label>
+				<div class="col-sm-4">
+		    		<select class="form-control" name="purchaseCount" id="purchaseCount">
+		    		<c:forEach var="i" begin="1" end="${product.prodCount}">
+					  	<option value="${i}" >${i}</option>
+					</c:forEach>
+					<input type="hidden" name="prodCount" id="prodCount" value="${product.prodCount}">
+				</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
 				<label for="userId" class="col-sm-offset-1 col-sm-3 control-label">구매자 아이디</label>
 				<div class="col-sm-4">
 		    		${user.userId}
@@ -159,19 +185,20 @@ $(function() {
 					</select>
 				</div>
    			</div>
-   			
    			<div class="form-group">
-		    	<label class="col-sm-offset-4 col-sm-2 radio-inline">
-		  			<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 회원정보와 동일
+		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
+   			<div class="form-group">
+		    	<label class="col-sm-2 radio-inline">
+		  			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 회원정보와 동일
 				</label>
-				<label class="col-sm-offset-4 col-sm-2 radio-inline">
+				<label class="col-sm-2 radio-inline">
 		  			<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked> 새로운 배송지
 				</label>
 		  	</div>
-		  	
+		  	</div>
    			<div class="form-group">
-		    <label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label">주소</label>
-		    <div class="col-sm-4 inline">
+   			<label for="receiverAddr" class="col-sm-offset-1 col-sm-3 control-label"></label>
+		    <div class="col-sm-2 inline">
 		      <input type="text" class="form-control" id="addrPostcode" name="addrPostcode" placeholder="우편번호">
 		    </div>
 		    <div class="col-sm-2 inline">
@@ -203,7 +230,7 @@ $(function() {
 			<div class="form-group">
    				<label for="divyDate" class="col-sm-offset-1 col-sm-3 control-label">배송 희망날짜</label>
    				<div class="col-sm-4">
-		    		<input type="date" class="form-control" id="divyDate" name="divyDate">
+		    		<input type="date" class="form-control" id="divyDate" name="divyDate" min="2023-09-20">
 				</div>
    			</div>
    			

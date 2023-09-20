@@ -149,6 +149,7 @@
 	   				<th align="left">상품명</th>
 					<th align="left">가격</th>
 					<th align="left">등록일</th>
+					<th align="left">상품갯수</th>
 					<th align="left">현재상태</th>
 					<th class="hidden"/>
 				</tr>
@@ -164,6 +165,7 @@
 		   				<td align="left">${product.prodName}</td>
 						<td align="left">${product.price}</td>
 						<td align="left">${product.manuDate}</td>
+						<td align="left">${product.prodCount}</td>
 						<td align="left">
 							<c:if test="${product.proTranCode=='판매중'}">
 								판매중

@@ -99,6 +99,11 @@
    		</div>
    		<hr/>
    		<div class="row">
+   			<div class="col-xs-4 col-md-2"><strong>상품갯수</strong></div>
+   			<div class="col-xs-8 col-md-4">${product.prodCount}</div>
+   		</div>
+   		<hr/>
+   		<div class="row">
    			<div class="col-xs-4 col-md-2"><strong>상품이미지</strong></div>
    			<div class="col-xs-8 col-md-4"><img src="/images/uploadFiles/${product.fileName}" style="width: 300px;"></div>
    		</div>

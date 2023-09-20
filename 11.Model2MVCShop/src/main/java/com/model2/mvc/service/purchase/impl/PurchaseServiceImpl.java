@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.model2.mvc.common.Search;
+import com.model2.mvc.service.domain.Product;
 import com.model2.mvc.service.domain.Purchase;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductDao;
@@ -36,6 +37,14 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Override
 	public void addPurchase(Purchase purchase) throws Exception {
+		int purchaseCount = purchase.getPurchaseCount();
+		int productCount = purchase.getPurchaseProd().getProdCount();
+		int sum = productCount - purchaseCount;
+		purchase.getPurchaseProd().setProdCount(sum);
+		
+		Product product = purchase.getPurchaseProd();
+
+		productDao.updateProductCount(product);
 		purchaseDao.insertPurchase(purchase);
 	}
 

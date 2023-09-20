@@ -13,6 +13,8 @@ public interface ProductDao {
 	
 	public void updateProduct(Product product) throws Exception;
 	
+	public void updateProductCount(Product product) throws Exception;
+	
 	public List<Product> getProductList(Search search) throws Exception;
 	
 	public int getTotalCount(Search search) throws Exception ;

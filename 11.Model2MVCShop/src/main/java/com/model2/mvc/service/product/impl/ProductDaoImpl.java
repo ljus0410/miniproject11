@@ -49,4 +49,10 @@ public class ProductDaoImpl implements ProductDao {
 		return sqlSession.selectOne("ProductMapper.getTotalCount", search);
 	}
 
+	@Override
+	public void updateProductCount(Product product) throws Exception {
+		System.out.println("여기");
+		sqlSession.update("ProductMapper.updateProductCount", product);
+	}
+
 }

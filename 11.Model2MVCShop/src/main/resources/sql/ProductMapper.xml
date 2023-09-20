@@ -28,7 +28,7 @@
 	 <!-- SQL : SELECT ONE -->
 	 <select id="getProduct" parameterType="int" resultMap="productSelectMap">
 		SELECT
-		prod_no, prod_name, prod_detail, manufacture_day, price, image_file, reg_date
+		prod_no, prod_name, prod_detail, manufacture_day, price, image_file, reg_date, prod_Count
 		FROM product
 		WHERE prod_no = #{value}
 	 </select>
@@ -36,9 +36,9 @@
 	 <select  id="getProductList"  parameterType="search"	resultMap="productSelectMap">
 	  	SELECT *
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	SELECT p.prod_no prod_no, p.prod_name prod_name, p.prod_detail prod_detail, 
-	  											p.manufacture_day manufacture_day, p.price price, p.image_file image_file, p.reg_date reg_date, 
-	  											NVL(t.tran_status_code, 0) tran_code, NVL(t.tran_no, 0) tran_no 
+	  					FROM		(	SELECT p.prod_no prod_no, p.prod_name prod_name, p.prod_detail prod_detail, p.manufacture_day manufacture_day,
+	  											p.price price, p.image_file image_file, p.reg_date reg_date, p.prod_count prod_count,
+	  											NVL(t.tran_status_code, 0) tran_code, NVL(t.tran_no, 0) tran_no
 											FROM product p, transaction t
 											<if test="searchCondition == null">
 												WHERE p.prod_no = t.prod_no(+)
@@ -79,7 +79,16 @@
 			prod_detail 		= #{prodDetail} ,
 			manufacture_day		= #{manuDate},
 			price				= #{price},
+			prod_count			= #{prod_count},
 			image_file			= #{fileName}
+	   	</set>
+	   	WHERE prod_no = #{prodNo}
+	 </update>
+	 
+	 <update id="updateProductCount" parameterType="product">
+	   	UPDATE product
+	   	<set>
+			prod_count			= #{prodCount},
 	   	</set>
 	   	WHERE prod_no = #{prodNo}
 	 </update>

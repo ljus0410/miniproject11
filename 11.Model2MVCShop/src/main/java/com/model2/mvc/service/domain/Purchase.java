@@ -16,6 +16,8 @@ public class Purchase {
 	private String tranCode;
 	private Date orderDate;
 	private String divyDate;
+	private int purchaseCount;
+	
 	
 	public Purchase(){
 	}
@@ -106,5 +108,13 @@ public class Purchase {
 				+ ", receiverName=" + receiverName + ", receiverPhone="
 				+ receiverPhone + ", tranCode=" + tranCode + ", tranNo="
 				+ tranNo + "]";
+	}
+
+	public int getPurchaseCount() {
+		return purchaseCount;
+	}
+
+	public void setPurchaseCount(int purchaseCount) {
+		this.purchaseCount = purchaseCount;
 	}
 }

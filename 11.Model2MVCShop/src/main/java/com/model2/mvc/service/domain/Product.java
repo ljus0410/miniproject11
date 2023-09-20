@@ -73,19 +73,20 @@ public class Product {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-
-	// Override
-	public String toString() {
-		return "ProductVO : [fileName]" + fileName
-				+ "[manuDate]" + manuDate+ "[price]" + price + "[prodDetail]" + prodDetail
-				+ "[prodName]" + prodName + "[prodNo]" + prodNo + "[prodTranCode]" + proTranCode;
-	}
-
+	
 	public int getProdCount() {
 		return prodCount;
 	}
 
 	public void setProdCount(int prodCount) {
 		this.prodCount = prodCount;
-	}	
+	}
+	
+	public String toString() {
+		return "ProductVO : [fileName]" + fileName + "[prodCount]" + prodCount
+				+ "[manuDate]" + manuDate+ "[price]" + price + "[prodDetail]" + prodDetail
+				+ "[prodName]" + prodName + "[prodNo]" + prodNo + "[prodTranCode]" + proTranCode;
+	}
+
+	
 }

@@ -21,6 +21,7 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- Bootstrap Dropdown Hover CSS -->
    <link href="/css/animate.min.css" rel="stylesheet">
    <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
@@ -38,6 +39,19 @@
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 	
+	$(function() {
+    	
+    	$("input:button").click(function daumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    
+                	$("#addrPostcode").val(data.zonecode);
+                	$("#addrRoad").val(data.roadAddress);
+                         
+                }
+            }).open();
+        })
+	});
 		//============= "수정"  Event 연결 =============
 		 $(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
