@@ -45,6 +45,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		Product product = purchase.getPurchaseProd();
 
 		productDao.updateProductCount(product);
+		System.out.println("여기");
 		purchaseDao.insertPurchase(purchase);
 	}
 
